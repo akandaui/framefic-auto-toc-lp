@@ -1,0 +1,230 @@
+<!-- Bricks > Settings > Custom code > Body (footer) scripts -->
+<script>
+/* Auto TOC landing page: scroll reveal, header state, word-by-word headline reveal,
+   pinned "How it works". Vanilla, no dependencies (Bricks: add as a page/global script). */
+(function () {
+  document.documentElement.classList.add("atoc-js");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Header state ---------- */
+  var header = document.querySelector(".atoc-header");
+
+  /* ---------- Fade-up reveal ---------- */
+  var items = document.querySelectorAll(".atoc-reveal");
+  if (!("IntersectionObserver" in window) || reduceMotion) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Word-by-word headline reveal ---------- */
+  var wordBlocks = [];
+  document.querySelectorAll(".atoc-words").forEach(function (el) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var span = document.createElement("span");
+        span.className = "atoc-word";
+        span.textContent = part;
+        frag.appendChild(span);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    wordBlocks.push({ el: el, words: el.querySelectorAll(".atoc-word") });
+  });
+
+  function updateWords() {
+    var vh = window.innerHeight;
+    wordBlocks.forEach(function (b) {
+      var r = b.el.getBoundingClientRect();
+      // 0 when the headline's top is at 90% of the viewport, 1 when it reaches 45%
+      var p = reduceMotion ? 1 : (vh * 0.9 - r.top) / (vh * 0.45);
+      p = Math.max(0, Math.min(1, p));
+      var lit = Math.round(p * b.words.length);
+      b.words.forEach(function (w, i) { w.classList.toggle("is-lit", i < lit); });
+    });
+  }
+
+  /* ---------- Pinned "How it works" ---------- */
+  var pin = document.querySelector("[data-atoc-pin]");
+  var cards = pin ? pin.querySelectorAll(".atoc-steps__card") : [];
+  var visNum = pin && pin.querySelector(".atoc-steps__visual-num");
+  var visIcon = pin && pin.querySelector(".atoc-steps__visual-icon");
+  var bar = pin && pin.querySelector(".atoc-steps__progress-bar");
+  var visArt = pin && pin.querySelector(".atoc-steps__visual-art");
+  var current = -1;
+
+  function canPin() {
+    return pin && !reduceMotion && window.innerWidth > 991 && window.innerHeight >= 600;
+  }
+
+  function setStep(i) {
+    if (i === current) return;
+    current = i;
+    cards.forEach(function (c, k) { c.classList.toggle("is-active", k === i); });
+    var num = cards[i].querySelector(".atoc-steps__number");
+    var icon = cards[i].querySelector(".atoc-steps__icon");
+    if (visNum && num) visNum.textContent = num.textContent;
+    if (visIcon && icon) visIcon.src = icon.getAttribute("src");
+    var art = cards[i].querySelector(".atoc-steps__art");
+    if (visArt) visArt.innerHTML = art ? art.outerHTML : "";
+  }
+
+  function updatePin() {
+    if (!pin) return;
+    var on = canPin();
+    pin.classList.toggle("is-pinned", on);
+    if (!on) { cards.forEach(function (c) { c.classList.remove("is-active"); }); current = -1; return; }
+    var r = pin.getBoundingClientRect();
+    var range = pin.offsetHeight - window.innerHeight;
+    var p = Math.max(0, Math.min(1, -r.top / range));
+    setStep(Math.min(cards.length - 1, Math.floor(p * cards.length)));
+    if (bar) bar.style.width = (p * 100).toFixed(1) + "%";
+  }
+
+  /* ---------- Loop ---------- */
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      if (header) header.classList.toggle("is-scrolled", window.scrollY > 8);
+      updateWords();
+      updatePin();
+      ticking = false;
+    });
+  }
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+
+  /* ---------- Hero play button: video lightbox ---------- */
+  var playBtn = document.querySelector(".atoc-play");
+  var modal = document.getElementById("atoc-video");
+  if (playBtn && modal) {
+    var frame = modal.querySelector(".atoc-video__frame");
+    var closeBtn = modal.querySelector(".atoc-video__close");
+
+    // data-video accepts a YouTube/Vimeo link or an .mp4 file; empty shows the poster for now
+    function embed(url) {
+      var yt = url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+      var vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+      if (yt) return '<iframe src="https://www.youtube-nocookie.com/embed/' + yt[1] + '?autoplay=1&rel=0" title="Auto TOC demo video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      if (vm) return '<iframe src="https://player.vimeo.com/video/' + vm[1] + '?autoplay=1" title="Auto TOC demo video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+      if (/\.(mp4|webm)(\?|$)/i.test(url)) return '<video src="' + url + '" controls autoplay playsinline></video>';
+      return "";
+    }
+
+    function openVideo() {
+      var url = (playBtn.getAttribute("data-video") || "").trim();
+      var poster = document.querySelector(".atoc-hero__poster");
+      frame.innerHTML = embed(url) || (poster ? '<img src="' + poster.getAttribute("src") + '" alt="">' : "");
+      modal.hidden = false;
+      document.body.classList.add("atoc-no-scroll");
+      closeBtn.focus();
+    }
+
+    function closeVideo() {
+      if (modal.hidden) return;
+      modal.hidden = true;
+      frame.innerHTML = "";
+      document.body.classList.remove("atoc-no-scroll");
+      playBtn.focus();
+    }
+
+    playBtn.addEventListener("click", openVideo);
+    modal.querySelectorAll("[data-atoc-close]").forEach(function (el) { el.addEventListener("click", closeVideo); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeVideo();
+      if (e.key === "Tab" && !modal.hidden) { e.preventDefault(); closeBtn.focus(); }
+    });
+  }
+
+  /* ---------- Hero ASCII field ---------- */
+  var ascii = document.querySelector(".atoc-hero__ascii");
+  if (ascii && ascii.getContext) {
+    var ctx = ascii.getContext("2d");
+    var hero = ascii.parentElement;
+    var RAMP = " .:-=+*#";
+    var CELL_W = 12, CELL_H = 20, FONT = 14;
+    var cols = 0, rows = 0, dpr = 1, running = false, inView = true, last = 0;
+    var mouse = { x: -9999, y: -9999 };
+
+    function sizeAscii() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var w = hero.offsetWidth, h = hero.offsetHeight;
+      ascii.width = Math.round(w * dpr);
+      ascii.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.font = FONT + "px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+      ctx.textBaseline = "top";
+      cols = Math.ceil(w / CELL_W);
+      rows = Math.ceil(h / CELL_H);
+    }
+
+    function drawAscii(t) {
+      var w = hero.offsetWidth, h = hero.offsetHeight;
+      ctx.clearRect(0, 0, w, h);
+      for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+          // Layered slow waves, 0..1
+          var v = (Math.sin(c * 0.09 + t * 0.55) + Math.sin(r * 0.17 - t * 0.4) + Math.sin((c + r) * 0.05 + t * 0.25) + 3) / 6;
+          // Gentle lift near the cursor
+          var dx = c * CELL_W - mouse.x, dy = r * CELL_H - mouse.y;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < 26000) v += (1 - d2 / 26000) * 0.3;
+          if (v < 0.48) continue;
+          v = Math.min(1, v);
+          var ch = RAMP[Math.min(RAMP.length - 1, Math.floor((v - 0.48) / 0.52 * RAMP.length) + 1)];
+          ctx.fillStyle = "rgba(82, 113, 255," + (0.05 + (v - 0.48) * 0.3).toFixed(3) + ")";
+          ctx.fillText(ch, c * CELL_W, r * CELL_H);
+        }
+      }
+    }
+
+    function loop(now) {
+      if (!running) return;
+      if (now - last > 50) { drawAscii(now / 1000); last = now; } // ~20fps is plenty
+      requestAnimationFrame(loop);
+    }
+
+    function start() {
+      if (running || reduceMotion || !inView || document.hidden) return;
+      running = true;
+      requestAnimationFrame(loop);
+    }
+    function stop() { running = false; }
+
+    sizeAscii();
+    drawAscii(0);
+    window.addEventListener("resize", function () { sizeAscii(); drawAscii(last / 1000); });
+    hero.addEventListener("pointermove", function (e) {
+      var b = hero.getBoundingClientRect();
+      mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top;
+    });
+    hero.addEventListener("pointerleave", function () { mouse.x = mouse.y = -9999; });
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) {
+        inView = en[0].isIntersecting;
+        inView ? start() : stop();
+      }).observe(hero);
+    }
+    start();
+  }
+})();
+</script>

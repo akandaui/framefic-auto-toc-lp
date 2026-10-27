@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto Table Of Contents - Framefic</title>
+  <meta name="description" content="Automatic clickable outlines for any Framer article or blog in 1 click.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=23">
+  <script>document.documentElement.classList.add("atoc-js")</script>
+</head>
+<body>
+
+<!-- ============ 1. Header ============ -->
+<header class="atoc-header">
+  <div class="atoc-header__inner">
+    <a class="atoc-header__logo" href="#" aria-label="Framefic home">
+      <img src="assets/img/logo-framefic.png" width="166" height="40" alt="Framefic">
+    </a>
+    <nav class="atoc-header__nav" aria-label="Main">
+      <a class="atoc-header__link" href="#">Home</a>
+      <a class="atoc-header__link" href="#">All Apps<img class="atoc-header__caret" src="assets/img/icon-chevron-down.svg" width="16" height="16" alt=""></a>
+      <a class="atoc-header__link" href="#">Blog</a>
+      <a class="atoc-header__link" href="#">Support<img class="atoc-header__caret" src="assets/img/icon-chevron-down.svg" width="16" height="16" alt=""></a>
+    </nav>
+    <a class="atoc-btn atoc-btn--primary atoc-header__cta" href="#">Get Support</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 2. Hero ============ -->
+<section class="atoc-section atoc-hero">
+  <canvas class="atoc-hero__ascii" aria-hidden="true"></canvas>
+  <div class="atoc-container atoc-hero__inner">
+    <div class="atoc-hero__content">
+      <span class="atoc-heading__eyebrow atoc-hero__badge atoc-reveal">AUTO TABLE OF CONTENTS</span>
+      <h1 class="atoc-hero__title atoc-reveal" style="--atoc-delay:.05s">Turn Long Framer Articles into <span class="atoc-gradient-text">Easy Reads</span></h1>
+      <p class="atoc-hero__text atoc-reveal" style="--atoc-delay:.1s">Make long-form articles, documentation, and Framer CMS blogs effortless to read. Auto Table of Contents scans page headings, creates a clickable outline, and highlights the current section as visitors scroll. Add it to your Framer canvas with one click, enjoy smooth scrolling with sticky header offset, and customize colors and fonts with zero code and zero website slowdowns.</p>
+      <div class="atoc-hero__actions atoc-reveal" style="--atoc-delay:.15s">
+        <a class="atoc-btn atoc-btn--primary atoc-hero__btn-primary" href="#">Start Your 7-Day Trial<svg class="atoc-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="atoc-btn atoc-btn--ghost atoc-hero__btn-secondary" href="#">View Demo</a>
+      </div>
+    </div>
+    <div class="atoc-hero__media atoc-reveal" style="--atoc-delay:.2s">
+      <div class="atoc-hero__frame atoc-glass"><div class="atoc-hero__player"><img class="atoc-hero__poster" src="assets/img/hero-video-poster@2x.png?v=4" width="576" height="432" alt="Auto TOC demo video: a Framer blog page with an On this page outline">
+        <button class="atoc-play" type="button" aria-label="Play the Auto TOC demo video" aria-haspopup="dialog" data-video=""><span class="atoc-play__ring" aria-hidden="true"></span><span class="atoc-play__ring atoc-play__ring--late" aria-hidden="true"></span><svg class="atoc-play__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></svg></button>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. Core capabilities ============ -->
+<section class="atoc-section atoc-section--aurora atoc-cap">
+  <div class="atoc-container">
+    <div class="atoc-heading atoc-reveal">
+      <p class="atoc-heading__eyebrow">CORE CAPABILITIES</p>
+      <h2 class="atoc-heading__title atoc-words">Built to Solve Real Framer Blog &amp; Article Navigation Problems</h2>
+      <p class="atoc-heading__text">Keep your visitors engaged and help them find answers faster. Here is what Auto Table of Contents does for your Framer site</p>
+    </div>
+    <div class="atoc-cap__grid">
+      <div class="atoc-cap__card atoc-cap__card--wide atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-1@2x.png" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Active Scroll Highlight Follows Your Readers</h3>
+        <p class="atoc-cap__text">The outline tracks where readers are on the page and highlights the current section automatically as they scroll down your article.</p>
+      </div>
+      <div class="atoc-cap__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-2.svg" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Automatic Heading Detection for Static &amp; CMS Pages</h3>
+        <p class="atoc-cap__text">Scans your page or Framer CMS article automatically. It builds a clickable table of contents instantly without typing links by hand.</p>
+      </div>
+      <div class="atoc-cap__card atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-3.svg" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Duplicate Headings Always Jump to the Right Place</h3>
+        <p class="atoc-cap__text">Articles with repeated titles like Overview or Features get unique link destinations so readers never jump to the wrong section.</p>
+      </div>
+      <div class="atoc-cap__card atoc-cap__card--wide atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-4.svg" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Matches Your Exact Framer Design Style</h3>
+        <p class="atoc-cap__text">Customize colors, active badges, typography, borders, and spacing directly inside Framer. It blends into your layout with zero page flicker.</p>
+      </div>
+      <div class="atoc-cap__card atoc-cap__card--wide atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-5.svg" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Sticky Header Offset Prevents Covered Titles</h3>
+        <p class="atoc-cap__text">Set custom spacing so clicked headings stop cleanly below your sticky navigation bar instead of hiding under your website header.</p>
+      </div>
+      <div class="atoc-cap__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <span class="atoc-cap__icon-wrap"><img class="atoc-cap__icon" src="assets/img/cap-icon-6.svg" width="56" height="56" alt=""></span>
+        <h3 class="atoc-cap__title">Updates in Real Time When Content Changes</h3>
+        <p class="atoc-cap__text">Whenever you edit article text or publish new CMS blog posts, the table of contents updates its headings and link tree automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. Founder ============ -->
+<section class="atoc-section atoc-founder">
+  <div class="atoc-founder__panel atoc-reveal">
+  <div class="atoc-founder__inner">
+    <div class="atoc-founder__content">
+      <h2 class="atoc-founder__title atoc-words">Meet the Person, Behind the Product</h2>
+      <img class="atoc-founder__quote-icon" src="assets/img/icon-quote.svg" width="56" height="39" alt="">
+      <p class="atoc-founder__quote">"We built this because great work deserves to be seen clearly, not just described. One drag should say it all."</p>
+      <div class="atoc-founder__person">
+        <img class="atoc-founder__photo" src="assets/img/founder-photo.png" width="104" height="104" alt="Mirza M Hasan">
+        <div class="atoc-founder__meta">
+          <img class="atoc-founder__signature" src="assets/img/founder-signature@2x.png" width="64" height="52" alt="">
+          <p class="atoc-founder__name">Mirza M Hasan</p>
+          <p class="atoc-founder__role">Founder &amp; CEO</p>
+        </div>
+      </div>
+    </div>
+    <div class="atoc-founder__media">
+      <div class="atoc-orbit" role="img" aria-label="Framefic and its Framer plugins: Cookie Master, Reviewfic, Smart CMS Filter, Memberframe, Formfic and Chat Bubbles">
+        <span class="atoc-orbit__glow" aria-hidden="true"></span>
+        <div class="atoc-orbit__ring atoc-orbit__ring--inner" aria-hidden="true"></div>
+        <div class="atoc-orbit__ring atoc-orbit__ring--outer" aria-hidden="true">
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:0deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/cookie-master@2x.png" width="28" height="28" alt=""><span>Cookie Master</span></span></div></div>
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:60deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/reviewfic@2x.png" width="28" height="28" alt=""><span>Reviewfic</span></span></div></div>
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:120deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/smart-cms-filter@2x.png" width="28" height="28" alt=""><span>Smart CMS Filter</span></span></div></div>
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:180deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/memberframe@2x.png" width="28" height="28" alt=""><span>Memberframe</span></span></div></div>
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:240deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/formfic@2x.png" width="28" height="28" alt=""><span>Formfic</span></span></div></div>
+          <div class="atoc-orbit__slot atoc-orbit__slot" style="--a:300deg"><div class="atoc-orbit__tile"><span class="atoc-orbit__chip"><img src="assets/img/fav/chat-bubbles@2x.png" width="28" height="28" alt=""><span>Chat Bubbles</span></span></div></div>
+        </div>
+        <div class="atoc-orbit__center" aria-hidden="true">
+          <img src="assets/img/logo-mark-framefic.svg" width="56" height="56" alt="">
+          <span>Framefic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ 5. More features ============ -->
+<section class="atoc-section atoc-section--aurora atoc-feat">
+  <div class="atoc-container">
+    <div class="atoc-heading atoc-reveal">
+      <p class="atoc-heading__eyebrow">MORE FEATURES</p>
+      <h2 class="atoc-heading__title atoc-words">Built to Customize, Automate, and Scale.</h2>
+      <p class="atoc-heading__text">Everything you need to guide readers, organize long articles, and polish your blog design</p>
+    </div>
+    <div class="atoc-feat__grid">
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <h3 class="atoc-feat__title">Clean Mobile Text Wrapping</h3>
+        <p class="atoc-feat__text">Section titles wrap neatly on mobile screens so long blog headings never get clipped or push layout bounds off screen.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-01@2x.png" width="318" height="179" alt="Phone outline with a long heading wrapped cleanly" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <h3 class="atoc-feat__title">Collapsible Outline for Narrow Sidebars</h3>
+        <p class="atoc-feat__text">Fold your table of contents into a compact drawer on narrow containers or mobile screens to save valuable page space.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-02@2x.png" width="318" height="179" alt="Collapsed and expanded On this page outline" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.16s">
+        <h3 class="atoc-feat__title">Custom Heading Range (H1 to H6)</h3>
+        <p class="atoc-feat__text">Choose exactly which heading levels appear in your outline with sensible H2 and H3 presets selected by default.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-03@2x.png" width="318" height="179" alt="Heading level chips with H2 and H3 selected" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <h3 class="atoc-feat__title">Free Forever with Zero Watermarks</h3>
+        <p class="atoc-feat__text">Use our full core outline component without paying monthly fees, seeing plugin watermarks, or hitting usage limits.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-04@2x.png" width="318" height="179" alt="Outline with no watermark and no usage limits" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <h3 class="atoc-feat__title">Keyboard and Touch Screen Friendly</h3>
+        <p class="atoc-feat__text">Readers can tab through links using keyboards or tap large touch targets on phones with full accessible navigation.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-05@2x.png" width="318" height="179" alt="Outline item with keyboard focus ring and Tab and Enter keys" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.16s">
+        <h3 class="atoc-feat__title">Nested Outline with Smart Indentation</h3>
+        <p class="atoc-feat__text">Organize subheadings in a clean indented visual tree that makes long technical guides quick and intuitive to browse.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-06@2x.png" width="318" height="179" alt="Nested outline with indented subheadings" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <h3 class="atoc-feat__title">No Reader Accounts or Login Locks</h3>
+        <p class="atoc-feat__text">Your table of contents runs directly on your website forever without requiring reader logins or third-party servers.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-07@2x.png" width="318" height="179" alt="Published page with outline and no reader login" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <h3 class="atoc-feat__title">One Named Article Container Target</h3>
+        <p class="atoc-feat__text">Target your main article section by ID so navigation headers, sidebars, and footer titles never clutter the outline.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-08@2x.png" width="318" height="179" alt="Article body included, navigation and footer ignored" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.16s">
+        <h3 class="atoc-feat__title">Reduced Motion for Sensitive Readers</h3>
+        <p class="atoc-feat__text">Disables smooth scroll jumping automatically for visitors who have reduced-motion preferences turned on in browsers.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-09@2x.png" width="318" height="179" alt="Reduced motion detected, scroll style set to instant" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.00s">
+        <h3 class="atoc-feat__title">Reusable Style Presets Across Projects</h3>
+        <p class="atoc-feat__text">Save your custom fonts and colors as personal presets and apply your signature style to new projects in one click.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-10@2x.png" width="318" height="179" alt="Saved style presets list" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.08s">
+        <h3 class="atoc-feat__title">Safe Component Updates and Recovery</h3>
+        <p class="atoc-feat__text">Protect your custom edits with fail-safe initialization that never breaks your layout or leaves orphaned code behind.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-11@2x.png" width="318" height="179" alt="Insertion check with four passing items" loading="lazy">
+      </div>
+      <div class="atoc-feat__card atoc-glass atoc-reveal" style="--atoc-delay:0.16s">
+        <h3 class="atoc-feat__title">Smooth or Instant Scroll Options</h3>
+        <p class="atoc-feat__text">Select between smooth animated scrolling or instant viewport jumping to match your site interaction style perfectly.</p>
+        <img class="atoc-feat__image" src="assets/img/feature-12@2x.png" width="318" height="179" alt="Scroll behaviour set to smooth with a 72 px header offset" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. How it works ============ -->
+<section class="atoc-section atoc-steps" data-atoc-pin>
+  <div class="atoc-steps__sticky">
+  <div class="atoc-container">
+    <div class="atoc-heading atoc-reveal">
+      <p class="atoc-heading__eyebrow">HOW IT WORKS</p>
+      <h2 class="atoc-heading__title atoc-words">Get Started in 3 Simple Steps.</h2>
+      <p class="atoc-heading__text">Add an automatic table of contents to your Framer articles in under three minutes.</p>
+    </div>
+    <div class="atoc-steps__grid">
+      <div class="atoc-steps__visual atoc-glass" aria-hidden="true">
+        <span class="atoc-steps__visual-label">Step</span>
+        <span class="atoc-steps__visual-num">1</span>
+        <div class="atoc-steps__visual-art"></div>
+        <img class="atoc-steps__visual-icon" src="assets/img/step-1.png" width="56" height="56" alt="">
+        <span class="atoc-steps__progress"><span class="atoc-steps__progress-bar"></span></span>
+      </div>
+      <div class="atoc-steps__card atoc-glass atoc-reveal" style="--atoc-delay:0.0s">
+        <div class="atoc-steps__top">
+          <span class="atoc-steps__number" aria-hidden="true">1</span>
+          <img class="atoc-steps__icon" src="assets/img/step-1.png" width="56" height="56" alt="">
+        </div>
+        <div class="atoc-steps__art atoc-art atoc-art--canvas" aria-hidden="true">
+          <div class="atoc-art__panel">
+            <div class="atoc-art__panel-head"><span class="atoc-art__logo"></span>Auto TOC</div>
+            <div class="atoc-art__row"><span>Component</span><span class="atoc-art__muted">Table of contents</span></div>
+            <div class="atoc-art__btn">Insert Component<svg class="atoc-art__cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6z" fill="#0e1330" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="atoc-art__page">
+            <div class="atoc-art__drop"><span class="atoc-art__toc-mini"><i></i><i class="is-on"></i><i></i></span></div>
+            <div class="atoc-art__lines"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <h3 class="atoc-steps__title">Add to Your Canvas</h3>
+        <p class="atoc-steps__text">Open the Auto Table of Contents plugin inside Framer and click Insert Component. Place it beside your article or inside a sticky sidebar column.</p></div>
+      <div class="atoc-steps__card atoc-glass atoc-reveal" style="--atoc-delay:0.1s">
+        <div class="atoc-steps__top">
+          <span class="atoc-steps__number" aria-hidden="true">2</span>
+          <img class="atoc-steps__icon" src="assets/img/step-2.png" width="56" height="56" alt="">
+        </div>
+        <div class="atoc-steps__art atoc-art atoc-art--settings" aria-hidden="true">
+          <div class="atoc-art__panel atoc-art__panel--wide">
+            <div class="atoc-art__label">Article ID</div>
+            <div class="atoc-art__field">#article-content<span class="atoc-art__caret"></span></div>
+            <div class="atoc-art__label">Headings</div>
+            <div class="atoc-art__chips"><span>H1</span><span class="is-on">H2</span><span class="is-on">H3</span><span>H4</span><span>H5</span><span>H6</span></div>
+            <div class="atoc-art__label">Active color</div>
+            <div class="atoc-art__swatches"><span class="is-on" style="--sw:#5271ff"></span><span style="--sw:#0e1330"></span><span style="--sw:#8fa3ff"></span><span style="--sw:#ffc745"></span></div>
+          </div>
+        </div>
+        <h3 class="atoc-steps__title">Pick Your Headings and Style</h3>
+        <p class="atoc-steps__text">Set your target article section ID (like #article-content) and select which headings to display (H2 and H3). Customize colors, active badges, and fonts in the right-side properties panel.</p></div>
+      <div class="atoc-steps__card atoc-glass atoc-reveal" style="--atoc-delay:0.2s">
+        <div class="atoc-steps__top">
+          <span class="atoc-steps__number" aria-hidden="true">3</span>
+          <img class="atoc-steps__icon" src="assets/img/step-3.png" width="56" height="56" alt="">
+        </div>
+        <div class="atoc-steps__art atoc-art atoc-art--publish" aria-hidden="true">
+          <div class="atoc-art__browser">
+            <div class="atoc-art__bar"><i></i><i></i><i></i><span class="atoc-art__url">yourstudio.com/blog</span></div>
+            <div class="atoc-art__body">
+              <div class="atoc-art__toc"><span class="atoc-art__toc-title">On this page</span><span>Introduction</span><span>Getting started</span><span>Styling</span><span>FAQ</span><b class="atoc-art__toc-hl"></b></div>
+              <div class="atoc-art__lines atoc-art__lines--article"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <span class="atoc-art__badge"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published</span>
+        </div>
+        <h3 class="atoc-steps__title">Publish and Enjoy Smooth Navigation</h3>
+        <p class="atoc-steps__text">Publish your Framer website. As visitors read your article, the table of contents follows along smoothly, highlighting each section in real time.</p></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============ 7. Pricing ============ -->
+<section class="atoc-section atoc-section--aurora atoc-pricing">
+  <div class="atoc-container">
+    <div class="atoc-heading atoc-reveal">
+      <p class="atoc-heading__eyebrow">PRICING PLANS</p>
+      <h2 class="atoc-heading__title atoc-words">Affordable Plans for Every Framer Project.</h2>
+      <p class="atoc-heading__text">Choose the plan that fits your Framer project and start adding interactive Before After image sliders without extra complexity.</p>
+    </div>
+    <div class="atoc-pricing__grid">
+
+      <div class="atoc-plan atoc-glass atoc-reveal">
+        <h3 class="atoc-plan__name">Monthly Plan</h3>
+        <p class="atoc-plan__desc">Best for Personal Portfolios</p>
+        <p class="atoc-plan__price"><span class="atoc-plan__currency">$</span><span class="atoc-plan__amount">4.99</span><span class="atoc-plan__period">/ Month</span></p>
+        <a class="atoc-btn atoc-plan__btn" href="#">Get Monthly Plan</a>
+        <h4 class="atoc-plan__included">What’s Included:</h4>
+        <ul class="atoc-plan__list">
+          <li class="atoc-plan__item"><span>Pay <strong>Monthly</strong>. Cancel <strong>Anytime.</strong></span></li>
+          <li class="atoc-plan__item"><span>Use on <strong>1 Framer Website</strong></span></li>
+          <li class="atoc-plan__item"><span>Framer <strong>CMS &amp; Static Page</strong></span></li>
+          <li class="atoc-plan__item"><span>Automatic H1 to H6 Heading</span></li>
+          <li class="atoc-plan__item"><span>Fixed<strong> Header Offset Control</strong></span></li>
+          <li class="atoc-plan__item"><span>Get <strong>Priority Support</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="atoc-plan atoc-plan--featured atoc-reveal" style="--atoc-delay:.08s">
+        <span class="atoc-plan__badge">Loved by people</span>
+        <h3 class="atoc-plan__name">Yearly Plan</h3>
+        <p class="atoc-plan__desc">Best for Small Businesses</p>
+        <p class="atoc-plan__price"><span class="atoc-plan__currency">$</span><span class="atoc-plan__amount">49.99</span><span class="atoc-plan__period">/ Year</span></p>
+        <a class="atoc-btn atoc-plan__btn" href="#">Get Yearly Plan</a>
+        <h4 class="atoc-plan__included">What’s Included:</h4>
+        <ul class="atoc-plan__list">
+          <li class="atoc-plan__item"><span>Pay <strong>Monthly</strong>. Cancel <strong>Anytime.</strong></span></li>
+          <li class="atoc-plan__item"><span>Use on <strong>1 Framer Website</strong></span></li>
+          <li class="atoc-plan__item"><span>Framer <strong>CMS &amp; Static Page</strong></span></li>
+          <li class="atoc-plan__item"><span>Automatic H1 to H6 Heading</span></li>
+          <li class="atoc-plan__item"><span>Fixed<strong> Header Offset Control</strong></span></li>
+          <li class="atoc-plan__item"><span>Get <strong>Priority Support</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="atoc-plan atoc-glass atoc-reveal">
+        <h3 class="atoc-plan__name">Lifetime Plan</h3>
+        <p class="atoc-plan__desc">Best for Enterprice Websites</p>
+        <p class="atoc-plan__price"><span class="atoc-plan__currency">$</span><span class="atoc-plan__amount">99.99</span><span class="atoc-plan__period">Pay Once</span></p>
+        <a class="atoc-btn atoc-plan__btn" href="#">Get Lifetime Access</a>
+        <h4 class="atoc-plan__included">What’s Included:</h4>
+        <ul class="atoc-plan__list">
+          <li class="atoc-plan__item"><span>Pay <strong>Monthly</strong>. Cancel <strong>Anytime.</strong></span></li>
+          <li class="atoc-plan__item"><span>Use on <strong>1 Framer Website</strong></span></li>
+          <li class="atoc-plan__item"><span>Framer <strong>CMS &amp; Static Page</strong></span></li>
+          <li class="atoc-plan__item"><span>Automatic H1 to H6 Heading</span></li>
+          <li class="atoc-plan__item"><span>Fixed<strong> Header Offset Control</strong></span></li>
+          <li class="atoc-plan__item"><span>Get <strong>Priority Support</strong></span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="atoc-pricing__note">**The above links will take you to the Framer plugin Store, where you can install the app and purchase your plan.</p>
+  </div>
+</section>
+
+<!-- ============ 8. FAQ + CTA ============ -->
+<section class="atoc-section atoc-faq">
+  <div class="atoc-container">
+    <div class="atoc-heading atoc-reveal">
+      <p class="atoc-heading__eyebrow">FAQ’s</p>
+      <h2 class="atoc-heading__title atoc-words">Frequently Asked</h2>
+      <p class="atoc-heading__text">Common Questions About Framer CMS Multi-Filter &amp; Search.</p>
+    </div>
+    <div class="atoc-faq__list">
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">Does this plugin work with Framer CMS blog posts?</h4></div>
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">How does the plugin avoid picking up headings from my header or footer?</h4></div>
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">What happens if my article has two headings with the exact same name?</h4></div>
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">Can I prevent headings from hiding under my sticky navigation bar?</h4></div>
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">Does this table of contents slow down my website or hurt SEO?</h4></div>
+      <div class="atoc-faq__item atoc-glass atoc-reveal"><h4 class="atoc-faq__question">Can I customize the outline style to match my website colors?</h4></div>
+    </div>
+    <div class="atoc-cta atoc-reveal">
+      <h2 class="atoc-cta__title atoc-words">Start showing your work the way it deserves to be seen</h2>
+      <p class="atoc-cta__text">Browse our apps on the Framer Marketplace and install in one click.</p>
+      <a class="atoc-btn atoc-cta__btn" href="#">Have a Look<svg class="atoc-btn__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 9. Footer ============ -->
+<footer class="atoc-footer">
+  <div class="atoc-footer__inner">
+    <div class="atoc-footer__top">
+    <div class="atoc-footer__brand">
+      <a href="#" aria-label="Framefic home"><img class="atoc-footer__logo" src="assets/img/logo-framefic-footer.svg" width="166" height="40" alt="Framefic"></a>
+      <div class="atoc-footer__apps" aria-label="Framefic plugins"><img src="assets/img/fav/cookie-master@2x.png" width="32" height="32" alt="Cookie Master" title="Cookie Master"><img src="assets/img/fav/reviewfic@2x.png" width="32" height="32" alt="Reviewfic" title="Reviewfic"><img src="assets/img/fav/smart-cms-filter@2x.png" width="32" height="32" alt="Smart CMS Filter" title="Smart CMS Filter"><img src="assets/img/fav/memberframe@2x.png" width="32" height="32" alt="Memberframe" title="Memberframe"><img src="assets/img/fav/formfic@2x.png" width="32" height="32" alt="Formfic" title="Formfic"><img src="assets/img/fav/chat-bubbles@2x.png" width="32" height="32" alt="Chat Bubbles" title="Chat Bubbles"></div>
+    </div>
+    <div class="atoc-footer__cols">
+      <div>
+        <h3 class="atoc-footer__heading">PRODUCTS</h3>
+        <ul class="atoc-footer__menu">
+          <li><a class="atoc-footer__link" href="#">Connectfic</a></li>
+          <li><a class="atoc-footer__link" href="#">Announcement Bar</a></li>
+          <li><a class="atoc-footer__link" href="#">Before After Image Slider</a></li>
+          <li><a class="atoc-footer__link" href="#">Bundlefic <span class="atoc-footer__soon">COMING SOON</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="atoc-footer__heading">RESOURCES</h3>
+        <ul class="atoc-footer__menu">
+          <li><a class="atoc-footer__link" href="#">Blog</a></li>
+          <li><a class="atoc-footer__link" href="#">Docs</a></li>
+          <li><a class="atoc-footer__link" href="#">Library</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="atoc-footer__heading">COMPANY</h3>
+        <ul class="atoc-footer__menu">
+          <li><a class="atoc-footer__link" href="#">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="atoc-footer__heading">SUPPORT</h3>
+        <ul class="atoc-footer__menu">
+          <li><a class="atoc-footer__link" href="#">HELP</a></li>
+          <li><a class="atoc-footer__link atoc-footer__link--upper" href="#">Privacy Policy</a></li>
+          <li><a class="atoc-footer__link atoc-footer__link--upper" href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="atoc-footer__bottom">
+      <p class="atoc-footer__copy">© 2026 FRAMEFIC. BUILT FOR THE FRAMER COMMUNITY.</p>
+      <a class="atoc-footer__totop" href="#" aria-label="Back to top">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============ Video lightbox (opened by the hero play button) ============ -->
+<div class="atoc-video" id="atoc-video" role="dialog" aria-modal="true" aria-label="Auto TOC demo video" hidden>
+  <div class="atoc-video__backdrop" data-atoc-close></div>
+  <div class="atoc-video__box">
+    <button class="atoc-video__close" type="button" aria-label="Close video" data-atoc-close>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="atoc-video__frame"></div>
+  </div>
+</div>
+<script src="assets/js/main.js?v=23" defer></script>
+</body>
+</html>
